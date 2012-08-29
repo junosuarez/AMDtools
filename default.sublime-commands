@@ -1,0 +1,14 @@
+[
+    {
+        "caption": "AMDtools: List module dependencies",
+        "command": "list_dependencies"
+    },
+    {
+        "caption": "AMDtools: List dependent modules",
+        "command": "list_dependent"
+    },
+    {
+        "caption": "AMDtools: Module info",
+        "command": "module_info"
+    }
+]
