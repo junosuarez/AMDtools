@@ -18,7 +18,7 @@ Install this package (checkout to your Sublime Text 2 packages directory)
 Make sure the first folder that's open is the root of your scripts folder (eg, where main.js is located)
 From any module, open the command palette (super + shift + p, by default), and run any of the AMDtools commands.
 
-Special thanks to Patrik Henningsson, author of (madge)[https://github.com/pahen/node-madge] and Robin Zhong, author of (sublime-jslint)[https://github.com/fbzhong/sublime-jslint]
+Special thanks to Patrik Henningsson, author of [madge](https://github.com/pahen/node-madge) and Robin Zhong, author of [sublime-jslint](https://github.com/fbzhong/sublime-jslint)
 
 License
 ===
