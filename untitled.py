@@ -40,8 +40,6 @@ class AMDtoolsCommand(sublime_plugin.WindowCommand):
   def proc_out_skip_line(self, proc, data):
     # remove the 1st line (with the module name)
     data = re.sub('^.*\n', '', data)
-    if (data == re.sub('.js$','', self.file_name) + '\n'):
-      return
     data = re.sub('  ', '\t', data)
     self.put_out(data)
 
@@ -56,7 +54,10 @@ class AMDtoolsCommand(sublime_plugin.WindowCommand):
     self.file_path = self.window.active_view().file_name()
     self.file_name = os.path.basename(self.file_path)
     self.root = self.window.folders()[0]
+    if re.search('\.js$', self.file_name) == None:
+      return False
     self.init_output_view()
+    return True
 
   def list_dependencies_exec(self):
     self.put_out('`' + self.get_module_name() + '` depends on:\n')
@@ -70,17 +71,20 @@ class AMDtoolsCommand(sublime_plugin.WindowCommand):
 
 class ListDependenciesCommand(AMDtoolsCommand):
   def run(self):
-    self.init()
+    if not self.init():
+      return
     self.list_dependencies_exec()
 
 class ListDependentCommand(AMDtoolsCommand):
   def run(self):
-    self.init()
+    if not self.init():
+      return
     self.list_dependent_exec(self.proc_out)
 
 class ModuleInfoCommand(AMDtoolsCommand):
   def run(self):
-    self.init()
+    if not self.init():
+      return
     self.list_dependent_exec(self.next)
 
   def next(self, proc, data):
