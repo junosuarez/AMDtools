@@ -34,18 +34,13 @@ class AMDtoolsCommand(sublime_plugin.WindowCommand):
     self.output_view.run_command("put_out", { "text": text });
 
   def proc_out(self, proc, data):
-    data = '\t' + data
-    data = re.sub('\n','\n\t',data)
-    data = data[:len(data)-1]
+    data = re.sub('^','\t',data)
     self.put_out(data)
 
   def proc_out_skip_line(self, proc, data):
     if (data == re.sub('.js$','', self.file_name) + '\n'):
       return
-    data = '\t' + data
-    data = re.sub('  ','',data)
-    data = re.sub('\n','\n\t',data)
-    data = data[:len(data)-1]
+    data = re.sub('  ', '\t', data)
     self.put_out(data)
 
   def proc_terminated(self, proc):
