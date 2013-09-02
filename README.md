@@ -1,22 +1,26 @@
 AMDtools
 ========
 
-JavaScript AMD utilities plugin for Sublime Text 2
+JavaScript AMD utilities plugin for Sublime Text 3
 
-By Jason Denizac <j@son.deniz.ac> @leJDen
+Sublime Text 2 version by Jason Denizac <j@son.deniz.ac> @leJDen
+
+Ported to Sublime 3 by Andre Asselin <github@aasselin.com>
 
 Install. Do stuff. Enjoy.
 
 Requirements
 ===
-Sublime Text 2
-madge (installed globally & in your $PATH)
+- Sublime Text 3
+- madge (installed globally & in your $PATH)
 
 Usage
 ===
-Install this package (checkout to your Sublime Text 2 packages directory)
-Make sure the first folder that's open is the root of your scripts folder (eg, where main.js is located)
-From any module, open the command palette (super + shift + p, by default), and run any of the AMDtools commands.
+- Install madge
+ - npm install -g madge
+- Install this package (checkout to your Sublime Text 3 packages directory)
+- Make sure the first folder that's open is the root of your scripts folder (e.g., where main.js is located)
+- From any module, open the command palette (super + shift + p, by default), and run any of the AMDtools commands.
 
 Special thanks to Patrik Henningsson, author of [madge](https://github.com/pahen/node-madge) and Robin Zhong, author of [sublime-jslint](https://github.com/fbzhong/sublime-jslint)
 
@@ -25,6 +29,8 @@ License
 (The MIT License)
 
 Copyright (c) 2012 Jason Denizac <j@son.deniz.ac>
+
+Copyright (c) 2013 Andre Asselin <github@aasselin.com>
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'Software'), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
