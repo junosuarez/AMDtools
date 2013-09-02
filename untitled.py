@@ -38,6 +38,8 @@ class AMDtoolsCommand(sublime_plugin.WindowCommand):
     self.put_out(data)
 
   def proc_out_skip_line(self, proc, data):
+    # remove the 1st line (with the module name)
+    data = re.sub('^.*\n', '', data)
     if (data == re.sub('.js$','', self.file_name) + '\n'):
       return
     data = re.sub('  ', '\t', data)
