@@ -21,6 +21,8 @@ class AMDtoolsCommand(sublime_plugin.WindowCommand):
     rel = self.file_name
     if self.file_path.startswith(self.root):
       rel = self.file_path[self.root.__len__() + 1:] # +1 to skip the first /
+    if os.sep == "\\":
+      rel = re.sub("\\\\", "/", rel)
     module_name = re.sub('\.js$', '', rel)
     return module_name
 
