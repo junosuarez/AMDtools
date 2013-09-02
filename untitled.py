@@ -44,11 +44,8 @@ class AMDtoolsCommand(sublime_plugin.WindowCommand):
     self.put_out(data)
 
   def proc_terminated(self, proc):
-    if proc.returncode == 0:
-      msg = ''
-    else:
-      msg = 'Make sure madge is installed (`npm install -g madge`) and in your $PATH'
-    self.put_out(msg)
+    if proc.returncode != 0:
+      self.put_out('Make sure madge is installed (`npm install -g madge`) and in your $PATH')
 
   def init(self):
     self.file_path = self.window.active_view().file_name()
