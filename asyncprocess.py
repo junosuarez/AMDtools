@@ -1,5 +1,5 @@
 import os
-import thread
+import _thread
 import subprocess
 import functools
 import time
@@ -10,38 +10,25 @@ class AsyncProcess(object):
     self.cmd = cmd
     self.success = success
     self.err = err
-    #print "DEBUG_EXEC: " + str(self.cmd)
-    self.proc = subprocess.Popen(self.cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    #print("DEBUG_EXEC: " + str(self.cmd))
+    self.proc = subprocess.Popen(self.cmd, shell=True, universal_newlines=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
 
     if self.proc.stdout:
-      thread.start_new_thread(self.read_stdout, ())
+      _thread.start_new_thread(self.read_stdout, ())
 
-    if self.proc.stderr:
-      thread.start_new_thread(self.read_stderr, ())
-
-    thread.start_new_thread(self.poll, ())
+    _thread.start_new_thread(self.poll, ())
 
   def poll(self):
-    while True:
-      if self.proc.poll() != None:
-        sublime.set_timeout(functools.partial(self.err, self.proc), 0)
-        break
-      time.sleep(0.1)
+    try:
+      #print("waiting")
+      self.proc.wait()
+    except TimeoutExpired:
+      #print("timeout")
+      self.proc.kill()
+    #print("done")
+    sublime.set_timeout(functools.partial(self.err, self.proc), 0)
 
   def read_stdout(self):
-    while True:
-      data = os.read(self.proc.stdout.fileno(), 2**15)
-      if data != "":
-        sublime.set_timeout(functools.partial(self.success, self.proc, data), 0)
-      else:
-        self.proc.stdout.close()
-        break
-
-  def read_stderr(self):
-    while True:
-      data = os.read(self.proc.stderr.fileno(), 2**15)
-      if data != "":
-        sublime.set_timeout(functools.partial(self.success, self.proc, data), 0)
-      else:
-        self.proc.stderr.close()
-        break
+    data = self.proc.stdout.read(2**15)
+    sublime.set_timeout(functools.partial(self.success, self.proc, data), 0)
+    self.proc.stdout.close()
