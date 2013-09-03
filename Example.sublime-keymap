@@ -1,0 +1,14 @@
+[
+    {
+        "keys": ["ctrl+alt+d"],
+        "command": "list_dependencies"
+    },
+    {
+        "keys": ["ctrl+alt+u"],
+        "command": "list_dependent"
+    },
+    {
+        "keys": ["ctrl+alt+i"],
+        "command": "module_info"
+    }
+]

@@ -1,0 +1,91 @@
+[
+    {
+        "id": "tools",
+        "caption": "Tools",
+        "children":
+        [
+            {
+                "id": "packages",
+                "caption": "Packages",
+                "children":
+                [
+                    {
+                        "id": "amdtools",
+                        "caption": "AMDtools",
+                        "children":
+                        [
+                            {
+                                "caption": "List module dependencies",
+                                "command": "list_dependencies"
+                            },
+                            {
+                                "caption": "List dependent modules",
+                                "command": "list_dependent"
+                            },
+                            {
+                                "caption": "Module info",
+                                "command": "module_info"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "caption": "Preferences",
+        "id": "preferences",
+        "children":
+        [
+            {
+                "caption": "Package Settings",
+                "id": "package-settings",
+                "children":
+                [
+                    {
+                        "caption": "AMDtools",
+                        "children":
+                        [
+                            {
+                                "command": "open_file",
+                                "args": {"file": "${packages}/AMDtools/README.md"},
+                                "caption": "README"
+                            },
+                            { "caption": "-" },
+                            {
+                                "command": "open_file",
+                                "args": {"file": "${packages}/AMDtools/Example.sublime-keymap"},
+                                "caption": "Example Key Bindings"
+                            },
+                            {
+                                "command": "open_file",
+                                "args": {
+                                    "file": "${packages}/User/Default (Windows).sublime-keymap",
+                                    "platform": "Windows"
+                                },
+                                "caption": "Key Bindings – User"
+                            },
+                            {
+                                "command": "open_file",
+                                "args": {
+                                    "file": "${packages}/User/Default (OSX).sublime-keymap",
+                                    "platform": "OSX"
+                                },
+                                "caption": "Key Bindings – User"
+                            },
+                            {
+                                "command": "open_file",
+                                "args": {
+                                    "file": "${packages}/User/Default (Linux).sublime-keymap",
+                                    "platform": "Linux"
+                                },
+                                "caption": "Key Bindings – User"
+                            },
+                            { "caption": "-" }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+]
